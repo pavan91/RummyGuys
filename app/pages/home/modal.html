@@ -1,0 +1,40 @@
+<ion-toolbar sky>
+    <div style="text-align:center;">
+    <ion-title>
+        {{label}} Task
+    </ion-title>
+     </div>
+     
+      <ion-buttons start>
+        <button light (click)="close()">
+            <span showWhen="ios">Cancel</span>
+            <ion-icon name="close" showWhen="android"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-toolbar>
+
+<ion-content scroll="false">
+
+    <ion-list>
+    
+        <ion-item>
+            <ion-label floating>Player Name</ion-label>
+            <ion-input type="text" [(ngModel)]="task"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label>Priority</ion-label>
+            <ion-select [(ngModel)]="priority">
+                <ion-option value="star">Star</ion-option>
+                <ion-option value="kudos">Kudos</ion-option>
+                <ion-option value="harbinger">Harbinger</ion-option>
+            </ion-select>
+        </ion-item>
+        
+    </ion-list>
+    
+    <div padding>
+        <button full round sky (click)="saveTask()">Save</button>
+    </div>
+    
+</ion-content>
