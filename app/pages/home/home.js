@@ -1,10 +1,56 @@
-import {Page, Modal, NavController, NavParams, ViewController, Alert, ActionSheet} from 'ionic-angular';
+import {Page, Modal, NavController, NavParams, ViewController, Alert, ActionSheet, Toast, Loading} from 'ionic-angular';
 import {DBService} from '../../service/dbservice';
+
 
 @Page({
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
+    
+     // provide Angular with metadata about things it should inject in the constructor
+  static get parameters() {
+    return [[NavController], [NavParams]];
+  }
+
+  constructor(nav, navParams) {
+    this.nav = nav;
+
+  }
+
+showToast() {
+    
+    
+    let toast = Toast.create({
+      message: 'Skip slides and enjoy ur Game',
+      duration: 3000
+    });
+
+    this.nav.present(toast);
+  }
+
+  itemTapped() {
+      
+     let loading = Loading.create({
+    content: 'Please wait...'
+  });
+
+  this.nav.push(DashboardPage);
+  
+  this.nav.present(loading);
+  setTimeout(() => {
+    loading.dismiss();
+  }, 3000);
+      
+    
+  }
+    
+    
+}
+
+@Page({
+  templateUrl: 'build/pages/home/dashboard.html'
+})
+export class DashboardPage {
   
    static get parameters(){
         return[ [NavController], [DBService] ];
@@ -18,6 +64,20 @@ export class HomePage {
     this.showTask();
 
   }
+  
+  doRefresh(refresher) {
+     
+      
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 200);
+  }
+  
+  
+  
   
    nxtRound(){
         if(this.points === undefined){

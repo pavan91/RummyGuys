@@ -1,114 +1,66 @@
-<ion-navbar sky *navbar >
-  
-  
-   <div style="text-align:center;">
-     
-     <ion-title >
-              Welcome to Rummy Guys
-     </ion-title>
-     
-    </div>
-  
-  </ion-navbar>
 
 
-<ion-content class="center" scroll="false" >
-  
-  
-  <!-- Register users -->
-   
-  <ion-list>
+
+
+
+
+<ion-navbar sky *navbar>
     
-        <ion-item >
-            
-            <ion-avatar item-left >
-                    <img src="http://marrybd.com/assets/icon/about.png">
-            </ion-avatar>     
-                
-            <ion-label sky>
-             
-               <b>Players:</b>
-            </ion-label>
-           
-            <ion-label style="text-align:left;" sky>
-                <b>Round No:</b>
-            </ion-label>
-            
-            <ion-label style="text-align:center;" sky>
-                <b>Total</b>
-                <b>Points:</b>
-            </ion-label>
-            <ion-label style="text-align:right;" sky>
-                <b>Points:</b>
-            </ion-label>
-            <ion-label style="text-align:right;" sky>
-                <b>Winner:</b>
-            </ion-label>
-        </ion-item>    
-       
-        <ion-item style="text-align:center;" *ngIf="!tasks.length">
-            
-            <p>Oops! Zero players are there..</p>
-            <b>Click <ion-icon name="unlock"></ion-icon> to add users</b>
-        </ion-item>
-        
-        
-        <ion-item-sliding *ngFor="#t of tasks">
-            <ion-item>
-                
-                <ion-avatar item-left>
-                    <img src="http://orig08.deviantart.net/8342/f/2015/127/8/1/ava3_by_dimongr-d8sioig.gif">
-                </ion-avatar>
-                <ion-label>
-                    <h2 [ngClass]="t.status">{{t.task}}</h2>
-                    <p [ngClass]="t.priority">{{t.priority}}</p>
-                </ion-label>
-                <ion-label >
-                    <h2 [ngClass]="t.status">{{t.round}}</h2>
-                </ion-label>
-                <ion-label>
-                    <h2 [ngClass]="t.status">{{t.tpoints}}</h2>
-                </ion-label>
-                <ion-label>
-                    <input style="text-align:center;" type="number" value="0" [(ngModel)]="points"/>
-                </ion-label>
-                
-                <ion-toggle checked = "{{(t.status=='pending') ? false : true}}" (click)="doneTask(t.id, t.status)"></ion-toggle>
-                
-            </ion-item>
-            <ion-item-options>
-                <button primary (click)="showModal(t.id)"><ion-icon name="clipboard"></ion-icon> Edit</button>
-                <button danger (click)="delTask(t.id)"><ion-icon name="trash"></ion-icon> Delete</button>
-            </ion-item-options>
-            
-        </ion-item-sliding>
-        
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  
+  <ion-title style="text-align:center;"> Welcome to Rummy Guys</ion-title>
+</ion-navbar>
+
+
+
+
+<ion-content class="tutorial-page">
     
-  </ion-list>
-  
-  
-  <!-- Register Button -->
-  
-  <div style="text-align:center;">
+     <button fab sky fab-bottom fab-right class="fab-footer" (click)="showToast()">
+        <ion-icon name="mic" is-active="false"></ion-icon>
+     </button>
+
     
-      <button round sky (click)="showModal()">
-           <ion-icon name="unlock"></ion-icon>
-                     Register
+<ion-slides pager>
+
+
+  
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <img src="http://payload98.cargocollective.com/1/4/136120/4271646/bud1.png" class="slide-image"/>
+      <h2 class="slide-title">Any one?</h2>
+      <button large clear (click)="itemTapped()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
       </button>
-      
-      
-       <!-- Score update Button -->
-      
-      <button round sky (click)="nxtRound()">
-           <ion-icon name="arrow-dropright-circle"></ion-icon>
-                     NextRnd
+    </ion-slide>
+    
+     <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <img src="http://www.allvectors.com/wp-content/uploads/2011/11/people-vector.jpg" class="slide-image"/>
+      <h2 class="slide-title">Any time?</h2>
+      <button large clear (click)="itemTapped()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
       </button>
-   
-  </div>
+    </ion-slide>
+    
+   <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <img src="http://s1.dmcdn.net/M0G46/1280x720-4EX.jpg" class="slide-image"/>
+      <h2 class="slide-title">Ready to Play?</h2>
+      <button large clear (click)="itemTapped()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+    
   
- 
-  
- 
-  
-  
+</ion-slides>
+
 </ion-content>
